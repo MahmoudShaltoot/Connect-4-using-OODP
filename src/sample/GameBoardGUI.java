@@ -3,7 +3,6 @@ package sample;
 import javafx.animation.TranslateTransition;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
@@ -14,7 +13,7 @@ import java.util.List;
 
 public class GameBoardGUI {
 
-    boolean PLAYER1TURN = true;
+    static boolean PLAYER1TURN = true;
 
     private  Color PLAYER1COLOR = Color.RED;
     private  Color PLAYER2COLOR = Color.BLACK;
@@ -24,7 +23,14 @@ public class GameBoardGUI {
 
     protected static final int margin_left = 50, margin_top = 50;
     protected static final int innerSpaceX = 30, innerSpaceY = 30;
-    //Widget widget = new ColorDecorator(new Disc(100),PLAYER1TURN ? Color.RED : Color.BLACK);
+
+    Game playerVSplayer = new PlayerVSPlayer();
+
+    Game playerVSRandomComputer = new PlayerVSRandomComputer();
+
+    Game playerVsAIomputer = new PlayerVsAIcomputer();
+
+    TranslateTransition animation;
     private Widget[][] grid = new Disc[ROWS][COLUMNS];
 
     Pane disc_root = new Pane();
@@ -53,7 +59,6 @@ public class GameBoardGUI {
         List<Rectangle> list = new ArrayList<>();
 
         for (int x = 0; x < COLUMNS; x++) {
-
             Rectangle rect = new Rectangle((DISC_SIZE + innerSpaceX) , (ROWS * DISC_SIZE) + margin_top + innerSpaceY*ROWS);
             rect.setTranslateX((x * DISC_SIZE) + margin_left + (x * innerSpaceX) - (innerSpaceX / 2));
 
@@ -63,8 +68,88 @@ public class GameBoardGUI {
             rect.setOnMouseExited(e -> rect.setFill(Color.TRANSPARENT));
 
             final int column = x;
-            rect.setOnMouseClicked(e -> placeDisc(5,column));  // call function Play
+            //region PLAYER VS PLAYER
+/*
+            rect.setOnMouseClicked(e -> {
 
+                        if(!ConnectFour.gameOver) {
+
+                            if (PLAYER1TURN && !ConnectFour.gameOver) {
+                                playerVSplayer.player1.play("player 1", column);
+                            } else {
+                                playerVSplayer.player2.play("player 2", column);
+                            }
+
+                            if(ConnectFour.validGame){
+                            final int rowIndex = ConnectFour.getRow();
+                            placeDisc(rowIndex, column);
+                            }
+                        }
+                        else
+                        {
+                            System.out.println("Game Over");
+                        }
+            });
+*/
+//endregion
+
+            //region RandomPlayer
+            /*rect.setOnMouseClicked(e -> {
+
+                if(!ConnectFour.gameOver) {
+
+                    if (PLAYER1TURN && !ConnectFour.gameOver) {
+                        playerVSRandomComputer.player1.play("player 1", column);
+                        if (ConnectFour.validGame) {
+                            final int rowIndex = ConnectFour.getRow();
+                            placeDisc(rowIndex, column);
+                        }
+                        animation.setOnFinished(event -> {
+                            if (!ConnectFour.gameOver) {
+                                try {
+                                    playerVSRandomComputer.player2.play();
+                                } catch (CloneNotSupportedException e1) {
+                                    e1.printStackTrace();
+                                }
+                                final int rowIndex = ConnectFour.getRow();
+                                final int columnIndex = ConnectFour.getColumn();
+                                placeDisc(rowIndex, columnIndex);
+                            }
+                        });
+                    }
+                }
+                else
+                    System.out.println("Game Over");
+            });
+            */
+            //endregion
+
+            rect.setOnMouseClicked(e -> {
+                if(!ConnectFour.gameOver) {
+
+                    if (PLAYER1TURN && !ConnectFour.gameOver) {
+                        playerVsAIomputer.player1.play("player 1", column);
+                        if (ConnectFour.validGame) {
+                            final int rowIndex = ConnectFour.getRow();
+                            placeDisc(rowIndex, column);
+                        }
+                        animation.setOnFinished(event -> {
+                            if (!ConnectFour.gameOver) {
+                                try {
+                                    playerVsAIomputer.player2.play();
+                                } catch (CloneNotSupportedException e1) {
+                                    e1.printStackTrace();
+                                }
+                                final int rowIndex = ConnectFour.getRow();
+                                final int columnIndex = ConnectFour.getColumn();
+                                placeDisc(rowIndex, columnIndex);
+                            }
+                        });
+                    }
+                }
+                else
+                    System.out.println("Game Over");
+            });
             list.add(rect);
         }
         return list;
@@ -83,7 +168,7 @@ public class GameBoardGUI {
         widget.get_disc().setTranslateX(column * (DISC_SIZE) + margin_left + (column * innerSpaceX));
 
         final int original_height =((row) * DISC_SIZE) + margin_top + ((row) * innerSpaceY);
-        TranslateTransition animation = new TranslateTransition(Duration.seconds(0.5), widget.get_disc());
+        animation = new TranslateTransition(Duration.seconds(1), widget.get_disc());
         animation.setToY(original_height);
 
         animation.play();

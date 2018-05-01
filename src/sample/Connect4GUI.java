@@ -27,7 +27,6 @@ public class Connect4GUI extends Application {
         return root;
     }
 
-
     @Override
     public void start(Stage primaryStage) {
         //Setting the title of the Stage.
@@ -36,9 +35,14 @@ public class Connect4GUI extends Application {
         primaryStage.setScene(new Scene(createContent()));
         //Display Connect4 Screen
         primaryStage.show();
+
     }
 
-    public void StartGame(String[] args){
+    public void StartGame(String[] args)
+    {
+        /*Game playerVSplayer = new PlayerVSPlayer();
+        playerVSplayer.startGame();*/
+
         launch(args);
     }
 }
