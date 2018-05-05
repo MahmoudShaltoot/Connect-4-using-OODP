@@ -13,7 +13,7 @@ public class ConnectFour {
 		validGame = validGame2;
 	}
 
-		public static void displayGrid() {
+	public static void displayGrid() {
 		for (int i = 0; i < connectfourgrid.length; i++) {
 			for (int j = 0; j < connectfourgrid[i].length; j++) {
 				System.out.print("|" + (connectfourgrid[i][j]));// ??????????????????

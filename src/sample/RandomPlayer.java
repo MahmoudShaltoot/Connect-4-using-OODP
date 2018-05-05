@@ -18,7 +18,6 @@ public class RandomPlayer implements Player {
 		while (ConnectFour.dropChip(Columnposition, 'Y')) {
 			Columnposition = randomColumn.nextInt(6);
 		}
-
 		ConnectFour.displayGrid();
 		if (ConnectFour.gameStatus(Columnposition, 'Y')) {
 			System.out.println("Player 2(Y)" + " won! Game Over!");
@@ -27,8 +26,6 @@ public class RandomPlayer implements Player {
 			System.out.println("it's a draw up");
 			return true;
 		}
-
-
 		return false;
 	}
 

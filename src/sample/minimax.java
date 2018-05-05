@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class minimax {
 	int depth ;
-	int x=5;
+	int x=0;
 
 	public minimax(int depth)
 	{
@@ -26,7 +26,7 @@ public class minimax {
 	{
 		double val = max_value(bo, depth);
 		//return max_value(st, depth);
-		return x;
+        return x;
 	}
         public double max_value(Board bo, int d) throws CloneNotSupportedException
 	{

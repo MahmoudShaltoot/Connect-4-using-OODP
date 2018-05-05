@@ -41,6 +41,7 @@ public class Board {
 			}
 		}
 
+
         public Object clone() throws CloneNotSupportedException {
         Board new_state = new Board(this.rows, this.cols);
 		for (int i = 0; i< this.rows; i++)

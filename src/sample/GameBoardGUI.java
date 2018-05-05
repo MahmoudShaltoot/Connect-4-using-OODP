@@ -69,7 +69,6 @@ public class GameBoardGUI {
 
             final int column = x;
             //region PLAYER VS PLAYER
-/*
             rect.setOnMouseClicked(e -> {
 
                         if(!ConnectFour.gameOver) {
@@ -90,8 +89,7 @@ public class GameBoardGUI {
                             System.out.println("Game Over");
                         }
             });
-*/
-//endregion
+            //endregion
 
             //region RandomPlayer
             /*rect.setOnMouseClicked(e -> {
@@ -124,7 +122,8 @@ public class GameBoardGUI {
             */
             //endregion
 
-            rect.setOnMouseClicked(e -> {
+            //region Player VS AIcomputer
+                /*rect.setOnMouseClicked(e -> {
                 if(!ConnectFour.gameOver) {
 
                     if (PLAYER1TURN && !ConnectFour.gameOver) {
@@ -149,7 +148,8 @@ public class GameBoardGUI {
                 }
                 else
                     System.out.println("Game Over");
-            });
+            });*/
+                //endregion
             list.add(rect);
         }
         return list;
@@ -157,10 +157,11 @@ public class GameBoardGUI {
 
     private void placeDisc(int row, int column){
 
-        Widget widget = new Disc(DISC_SIZE);
-        widget = new ColorDecorator(widget,PLAYER1TURN ? PLAYER1COLOR : PLAYER2COLOR);
-
-        widget.drawDisc();
+        Widget widget;
+        if(PLAYER1TURN)
+             widget = new RedDisc(new Disc(DISC_SIZE));
+        else
+             widget = new BlackDisc(new Disc(DISC_SIZE));
 
         PLAYER1TURN = !PLAYER1TURN;
         disc_root.getChildren().add(widget.get_disc());
