@@ -15,9 +15,6 @@ public class GameBoardGUI {
 
     static boolean PLAYER1TURN = true;
 
-    private  Color PLAYER1COLOR = Color.RED;
-    private  Color PLAYER2COLOR = Color.BLACK;
-
     private final int DISC_SIZE = 100;
     private final int ROWS = 6, COLUMNS = 7;
 
@@ -162,6 +159,8 @@ public class GameBoardGUI {
              widget = new RedDisc(new Disc(DISC_SIZE));
         else
              widget = new BlackDisc(new Disc(DISC_SIZE));
+
+        widget.drawDisc();
 
         PLAYER1TURN = !PLAYER1TURN;
         disc_root.getChildren().add(widget.get_disc());

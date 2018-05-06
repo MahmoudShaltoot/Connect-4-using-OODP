@@ -3,7 +3,7 @@ package sample;
 import javafx.scene.paint.Color;
 
 public class BlackDisc extends Decorator {
-    protected BlackDisc(Widget widget) {
+    public BlackDisc(Widget widget) {
         super(widget);
     }
     @Override
@@ -12,7 +12,7 @@ public class BlackDisc extends Decorator {
         setDiscColorRed();
     }
 
-    public void setDiscColorRed(){
+    private void setDiscColorRed(){
         widget.get_disc().setFill(Color.BLACK);
     }
 }

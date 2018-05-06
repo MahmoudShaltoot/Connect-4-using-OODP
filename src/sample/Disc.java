@@ -12,7 +12,7 @@ public class Disc extends Widget{
 
     @Override
     public void drawDisc() {
-        disc = new Circle(disc_size / 2, Color.BLACK);
+        disc = new Circle(disc_size / 2);
         disc.setCenterX(disc_size/2);
         disc.setCenterY(disc_size/2);
     }
