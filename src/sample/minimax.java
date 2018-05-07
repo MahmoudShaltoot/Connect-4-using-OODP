@@ -3,16 +3,6 @@ package sample;
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author mario
- */
 public class minimax {
 	int depth ;
 	int x=0;
@@ -22,13 +12,13 @@ public class minimax {
 		this.depth = depth;
 	}
 
-        public int getAction(Board bo) throws CloneNotSupportedException
+	public int getAction(Board bo) throws CloneNotSupportedException
 	{
 		double val = max_value(bo, depth);
 		//return max_value(st, depth);
         return x;
 	}
-        public double max_value(Board bo, int d) throws CloneNotSupportedException
+	public double max_value(Board bo, int d) throws CloneNotSupportedException
 	{
 		ArrayList<Integer> children = new ArrayList<Integer>();
 		if(d ==0)
@@ -71,7 +61,6 @@ public class minimax {
 			z= max_value(bo.generateSuccessor('X',children.get(i)),d-1);
 			if(z <= v)
 				v=z;
-		
 		}
 		return v;
 		}

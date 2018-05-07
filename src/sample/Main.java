@@ -2,13 +2,28 @@ package sample;
 //region GUI
 
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.util.Random;
 
-public class Main {
-    public static void main(String[] args) {
+public class Main extends Application {
 
-        Connect4GUI connect4Game = new Connect4GUI();
-        connect4Game.StartGame(args);
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 400, 500));
+        MainPageController.primaryStage = primaryStage;
+        primaryStage.show();
+        }
+
+    public static void main(String[] args) {
+        launch(args);
+
     }
 }
 

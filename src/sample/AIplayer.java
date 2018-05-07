@@ -13,6 +13,7 @@ public class AIplayer implements Player {
     public boolean play() throws CloneNotSupportedException {
         Board board = new Board(6,7);
         board.setBoard(ConnectFour.connectfourgrid);
+
         int column = minimaxObj.getAction(board);
 
         ConnectFour.dropChip(column, 'Y');
@@ -27,8 +28,6 @@ public class AIplayer implements Player {
         }
         return false;
     }
-
-
 
     @Override
     public boolean play(String playerID, int column) {

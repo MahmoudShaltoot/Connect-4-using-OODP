@@ -8,7 +8,6 @@ public class ConnectFour {
 	public static boolean gameOver = false;
 	public static boolean validGame = true;
 
-
 	public static void setValidGame(boolean validGame2) {
 		validGame = validGame2;
 	}
@@ -42,38 +41,32 @@ public class ConnectFour {
 		return row;
 	}
 
-	public static int getColumn(){
-		return column;
-	}
+	public static int getColumn(){return column;}
 
 	public static boolean gameStatus(int ColumnPoistion, char ChipColor) {
-		int rowPoistion = 0;
+		int rowPosition = 0;
 		for (int i = 0; i < connectfourgrid.length; i++) {
 			if (connectfourgrid[i][ColumnPoistion] != 0) {
-				rowPoistion = i;
+				rowPosition = i;
 				break;
 			}
 		}
-		if (checkColumn(ColumnPoistion, ChipColor, rowPoistion)) {
-			gameOver = true;
+		gameOver = true;
+		if (checkColumn(ColumnPoistion, ChipColor, rowPosition)) {
 			return true;
 		}
-		if (CheckRow(ColumnPoistion, ChipColor, rowPoistion)) {
-			gameOver = true;
+		if (CheckRow(ColumnPoistion, ChipColor, rowPosition)) {
 			return true;
 		}
-		if (checkleftDigonal(ColumnPoistion, ChipColor, rowPoistion)) {
-			gameOver = true;
+		if (checkleftDigonal(ColumnPoistion, ChipColor, rowPosition)) {
 			return true;
 		}
-		if (checkRightDigonal(ColumnPoistion, ChipColor, rowPoistion)) {
-			gameOver = true;
+		if (checkRightDigonal(ColumnPoistion, ChipColor, rowPosition)) {
 			return true;
 		}
-
+		gameOver = false;
 		return false;
 	}
-
 
 	public static boolean checkColumn(int ColumnPoistion, char ChipColor, int rowPoistion) {
 		int chipCounter = 1;

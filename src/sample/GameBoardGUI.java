@@ -21,13 +21,13 @@ public class GameBoardGUI {
     protected static final int margin_left = 50, margin_top = 50;
     protected static final int innerSpaceX = 30, innerSpaceY = 30;
 
-    Game playerVSplayer = new PlayerVSPlayer();
+    private Game playerVSplayer ;
 
-    Game playerVSRandomComputer = new PlayerVSRandomComputer();
+    private Game playerVSRandomComputer ;
 
-    Game playerVsAIomputer = new PlayerVsAIcomputer();
+    private Game playerVsAIomputer ;
 
-    TranslateTransition animation;
+    private TranslateTransition animation;
     private Widget[][] grid = new Disc[ROWS][COLUMNS];
 
     Pane disc_root = new Pane();
@@ -52,9 +52,18 @@ public class GameBoardGUI {
         return rectangleShape;
     }
 
+    public void  getGameMode(){
+        if(Game.getGameMode().equals("playerVSplayer"))
+            playerVSplayer = new PlayerVSPlayer();
+        else if (Game.getGameMode().equals("playerVSrandomComputer"))
+            playerVSRandomComputer = new PlayerVSRandomComputer();
+        else if(Game.getGameMode().equals("playerVSAIcomputer"))
+            playerVsAIomputer = new PlayerVsAIcomputer();
+    }
+
     public List<Rectangle> columns_hover() {
         List<Rectangle> list = new ArrayList<>();
-
+        getGameMode();
         for (int x = 0; x < COLUMNS; x++) {
             Rectangle rect = new Rectangle((DISC_SIZE + innerSpaceX) , (ROWS * DISC_SIZE) + margin_top + innerSpaceY*ROWS);
             rect.setTranslateX((x * DISC_SIZE) + margin_left + (x * innerSpaceX) - (innerSpaceX / 2));
@@ -66,8 +75,8 @@ public class GameBoardGUI {
 
             final int column = x;
             //region PLAYER VS PLAYER
-            rect.setOnMouseClicked(e -> {
-
+            if(Game.getGameMode().equals("playerVSplayer")){
+                rect.setOnMouseClicked(e -> {
                         if(!ConnectFour.gameOver) {
 
                             if (PLAYER1TURN && !ConnectFour.gameOver) {
@@ -75,7 +84,6 @@ public class GameBoardGUI {
                             } else {
                                 playerVSplayer.player2.play("player 2", column);
                             }
-
                             if(ConnectFour.validGame){
                             final int rowIndex = ConnectFour.getRow();
                             placeDisc(rowIndex, column);
@@ -86,13 +94,13 @@ public class GameBoardGUI {
                             System.out.println("Game Over");
                         }
             });
+            }
             //endregion
 
             //region RandomPlayer
-            /*rect.setOnMouseClicked(e -> {
-
+            if(Game.getGameMode().equals("playerVSrandomComputer")){
+                rect.setOnMouseClicked(e -> {
                 if(!ConnectFour.gameOver) {
-
                     if (PLAYER1TURN && !ConnectFour.gameOver) {
                         playerVSRandomComputer.player1.play("player 1", column);
                         if (ConnectFour.validGame) {
@@ -116,13 +124,14 @@ public class GameBoardGUI {
                 else
                     System.out.println("Game Over");
             });
-            */
+            }
+
             //endregion
 
             //region Player VS AIcomputer
-                /*rect.setOnMouseClicked(e -> {
+            if(Game.getGameMode().equals("playerVSAIcomputer")){
+                rect.setOnMouseClicked(e -> {
                 if(!ConnectFour.gameOver) {
-
                     if (PLAYER1TURN && !ConnectFour.gameOver) {
                         playerVsAIomputer.player1.play("player 1", column);
                         if (ConnectFour.validGame) {
@@ -145,7 +154,8 @@ public class GameBoardGUI {
                 }
                 else
                     System.out.println("Game Over");
-            });*/
+            });
+            }
                 //endregion
             list.add(rect);
         }

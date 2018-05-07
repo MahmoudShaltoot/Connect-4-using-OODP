@@ -37,12 +37,4 @@ public class Connect4GUI extends Application {
         primaryStage.show();
 
     }
-
-    public void StartGame(String[] args)
-    {
-        /*Game playerVSplayer = new PlayerVSPlayer();
-        playerVSplayer.startGame();*/
-
-        launch(args);
-    }
 }
