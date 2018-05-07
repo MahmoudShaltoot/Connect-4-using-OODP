@@ -1,6 +1,4 @@
 package sample;
-//region GUI
-
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,10 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.Random;
-
 public class Main extends Application {
 
+    //Main page , Select GameMode and press Start game method
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
@@ -23,9 +20,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
     }
 }
-
-//endregion
 

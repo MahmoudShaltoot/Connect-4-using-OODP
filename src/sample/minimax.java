@@ -12,13 +12,13 @@ public class minimax {
 		this.depth = depth;
 	}
 
-	public int getAction(Board bo) throws CloneNotSupportedException
+        public int getAction(Board bo) throws CloneNotSupportedException
 	{
 		double val = max_value(bo, depth);
 		//return max_value(st, depth);
         return x;
 	}
-	public double max_value(Board bo, int d) throws CloneNotSupportedException
+        public double max_value(Board bo, int d) throws CloneNotSupportedException
 	{
 		ArrayList<Integer> children = new ArrayList<Integer>();
 		if(d ==0)
@@ -61,6 +61,7 @@ public class minimax {
 			z= max_value(bo.generateSuccessor('X',children.get(i)),d-1);
 			if(z <= v)
 				v=z;
+
 		}
 		return v;
 		}

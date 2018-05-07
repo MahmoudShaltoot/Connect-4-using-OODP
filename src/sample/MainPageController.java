@@ -18,8 +18,6 @@ public class MainPageController {
     public static boolean selected = false;
     public void handleSubmitButtonAction(ActionEvent event) {
 
-        System.out.println("Inside StartButton");
-
         if(playerVSplayer.isSelected()) {
             Game.setGameMode("playerVSplayer");
 

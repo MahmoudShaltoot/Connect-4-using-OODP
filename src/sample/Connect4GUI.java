@@ -24,6 +24,9 @@ public class Connect4GUI extends Application {
 
         root.getChildren().addAll(gameBoardGUI.columns_hover());
 
+        root.getChildren().add(gameBoardGUI.player1Label);
+        root.getChildren().add(gameBoardGUI.player2Label);
+
         return root;
     }
 
