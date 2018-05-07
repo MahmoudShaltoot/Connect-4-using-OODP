@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="CENTER" focusTraversable="false" hgap="10.0" layoutX="0.0" layoutY="0.0" minWidth="-1.0" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #1F1F1F;&#10;" styleClass="null" vgap="10.0" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.MainPageController">
+  <children>
+    <Button id="startbutton" fx:id="startGameBtn" disable="false" mnemonicParsing="false" onAction="#handleSubmitButtonAction" scaleX="1.0" style="-fx-background-color: #1F1F1F;&#10;-fx-background-radius:1;&#10; -fx-border-color:#01C6FF;" text="Start game" textFill="WHITE" translateX="150.0" translateY="200.0" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <RadioButton id="" fx:id="playerVSplayer" mnemonicParsing="false" selected="true" text="Player VS Player" translateX="30.0" translateY="-90.0" underline="false" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <font>
+        <Font name="Arial" size="16.0" fx:id="x1" />
+      </font>
+      <textFill>
+        <Color blue="1.000" green="0.640" red="0.400" fx:id="x2" />
+      </textFill>
+      <toggleGroup>
+        <ToggleGroup fx:id="gamemode" />
+      </toggleGroup>
+    </RadioButton>
+    <RadioButton id="halo" fx:id="playerVSaicomputer" font="$x1" mnemonicParsing="false" text="Player VS AI Computer" textFill="$x2" toggleGroup="$gamemode" translateX="30.0" translateY="-55.0" underline="false" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <RadioButton id="" fx:id="playerVSrandomcomputer" font="$x1" mnemonicParsing="false" text="Player VS Random computer" textFill="$x2" toggleGroup="$gamemode" translateX="30.0" translateY="-20.0" underline="false" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Label minHeight="18.000091552734375" prefHeight="18.000091552734375" text="Game mode" textFill="#9f9f9f" translateX="30.0" translateY="-120.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" smooth="true" translateX="100.0" translateY="-210.0" translateZ="0.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <image>
+        <Image url="@header_logo.png" />
+      </image>
+    </ImageView>
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>
