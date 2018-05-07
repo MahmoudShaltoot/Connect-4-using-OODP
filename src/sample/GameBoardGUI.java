@@ -89,7 +89,7 @@ public class GameBoardGUI {
             //region PLAYER VS PLAYER
             if(Game.getGameMode().equals("playerVSplayer")){
                 rect.setOnMouseClicked(e -> {
-                        if(!ConnectFour.gameOver) {
+                        if(ContextState.getGameState().equals("running")) {
                             if (PLAYER1TURN && !ConnectFour.gameOver) {
                                 playerVSplayer.player1.play("player 1", column);
                                 } else {
@@ -104,7 +104,8 @@ public class GameBoardGUI {
                             }
                         } else {
                             makeGameOverSound();
-                            System.out.println("Game Over");
+                            System.out.println("Current Game State : " + ContextState.getGameState());
+
                         }
                 });
             }
@@ -113,7 +114,7 @@ public class GameBoardGUI {
             //region Random & AI computer
             if(!Game.getGameMode().equals("playerVSplayer")){
                 rect.setOnMouseClicked(e -> {
-                if(!ConnectFour.gameOver) {
+                if(ContextState.getGameState().equals("running")) {
                     if (PLAYER1TURN && !ConnectFour.gameOver) {
                         if(Game.getGameMode().equals("playerVSrandomComputer"))
                             playerVSRandomComputer.player1.play("player 1", column);
@@ -149,7 +150,7 @@ public class GameBoardGUI {
                 }
                 else {
                     makeGameOverSound();
-                    System.out.println("Game Over");
+                    System.out.println("Current Game state :" + ContextState.getGameState());
                     }
                 });
             }

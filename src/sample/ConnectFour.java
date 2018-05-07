@@ -9,6 +9,8 @@ public class ConnectFour {
 	public static boolean validGame = true;
 
 	public static Momento momento = new Momento();
+	public static ContextState contextState = new ContextState();
+
 
 	public static void setValidGame(boolean validGame2) {
 		validGame = validGame2;
@@ -61,15 +63,19 @@ public class ConnectFour {
 		}
 		gameOver = true;
 		if (checkColumn(ColumnPoistion, ChipColor, rowPosition)) {
+			contextState.setState(new GameOverState());
 			return true;
 		}
 		if (CheckRow(ColumnPoistion, ChipColor, rowPosition)) {
+			contextState.setState(new GameOverState());
 			return true;
 		}
 		if (checkleftDigonal(ColumnPoistion, ChipColor, rowPosition)) {
+			contextState.setState(new GameOverState());
 			return true;
 		}
 		if (checkRightDigonal(ColumnPoistion, ChipColor, rowPosition)) {
+			contextState.setState(new GameOverState());
 			return true;
 		}
 		gameOver = false;
