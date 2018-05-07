@@ -8,6 +8,8 @@ public class ConnectFour {
 	public static boolean gameOver = false;
 	public static boolean validGame = true;
 
+	public static Momento momento = new Momento();
+
 	public static void setValidGame(boolean validGame2) {
 		validGame = validGame2;
 	}
@@ -15,7 +17,7 @@ public class ConnectFour {
 	public static void displayGrid() {
 		for (int i = 0; i < connectfourgrid.length; i++) {
 			for (int j = 0; j < connectfourgrid[i].length; j++) {
-				System.out.print("|" + (connectfourgrid[i][j]));// ??????????????????
+				System.out.print("|" + (connectfourgrid[i][j]));
 			}
 			System.out.println("|");
 		}
@@ -28,6 +30,7 @@ public class ConnectFour {
 		for (int i = connectfourgrid.length - 1; i >= 0; i--)// start at the bottom of the grid
 		{
 			if (connectfourgrid[i][ColumnPoistion] == 0) {
+				Momento.saveStateToMomento(connectfourgrid);
 				connectfourgrid[i][ColumnPoistion] = ChipColor;
 				row = i; 				column = ColumnPoistion;
 				return false;
@@ -35,6 +38,11 @@ public class ConnectFour {
 		}
 		System.out.println("Column is Full, " + ChipColor + " player ,try again!");
 		return true;
+	}
+
+	public static void getMomentoState(){
+		momento.getStateFromMomento();
+		displayGrid();
 	}
 
 	public static int getRow(){

@@ -45,7 +45,6 @@ public class minimax {
 
 		public double min_value(Board bo, int d) throws CloneNotSupportedException
 	{
-		
 		ArrayList<Integer> children = new ArrayList<Integer>();
 		if(d == 0)
 		return bo.evaluationFunction();

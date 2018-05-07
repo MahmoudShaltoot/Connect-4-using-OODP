@@ -2,20 +2,23 @@ package sample;
 
 import javafx.animation.TranslateTransition;
 
+import javafx.event.Event;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 import javafx.util.Duration;
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.List;
 
 
 public class GameBoardGUI {
 
-    static private boolean PLAYER1TURN = true;
 
     private final int DISC_SIZE = 100;
     private final int ROWS = 6, COLUMNS = 7;
@@ -26,6 +29,9 @@ public class GameBoardGUI {
     javafx.scene.control.Label player1Label = new javafx.scene.control.Label("player 1");
     javafx.scene.control.Label player2Label = new javafx.scene.control.Label("player 2");
 
+    Button button = new Button("Undo");
+
+    static private boolean PLAYER1TURN = true;
     private Game playerVSplayer ;
     private Game playerVSRandomComputer ;
     private Game playerVsAIomputer ;
@@ -33,6 +39,7 @@ public class GameBoardGUI {
     private TranslateTransition animation;
 
     Pane disc_root = new Pane();
+    Circle circle;
 
     protected Shape makeGridBoard(){
         //Rectangle width and height should be bigger than normal because of margin between tiles
@@ -68,6 +75,7 @@ public class GameBoardGUI {
     public List<Rectangle> columns_hover() {
         List<Rectangle> list = new ArrayList<>();
         initGameMode();
+        positionButton();
         for (int x = 0; x < COLUMNS; x++) {
             Rectangle rect = new Rectangle((DISC_SIZE + innerSpaceX) , (ROWS * DISC_SIZE) + margin_top + innerSpaceY*ROWS);
             rect.setTranslateX((x * DISC_SIZE) + margin_left + (x * innerSpaceX) - (innerSpaceX / 2));
@@ -91,7 +99,7 @@ public class GameBoardGUI {
                             final int rowIndex = ConnectFour.getRow();
                             placeDisc(rowIndex, column);
                             if(ConnectFour.gameOver)
-                                    makeGameOverSound();
+                                makeGameOverSound();
                                 changePlayerTurnLabels();
                             }
                         } else {
@@ -146,7 +154,6 @@ public class GameBoardGUI {
                 });
             }
             //endregion
-
             list.add(rect);
         }
         return list;
@@ -172,7 +179,23 @@ public class GameBoardGUI {
         animation.setToY(original_height);
 
         animation.play();
-    }
+        circle = widget.get_disc();
+
+        button.setOnAction(event -> {
+                    if(Game.getGameMode().equals("playerVSplayer")){
+                        PLAYER1TURN = !PLAYER1TURN;
+                        ConnectFour.getMomentoState();
+                        animation = new TranslateTransition(Duration.seconds(0.8), circle);
+                        animation.setToY(- original_height);
+                        changePlayerTurnLabels();
+                        animation.play();
+                        animation.setOnFinished(e -> {
+                            disc_root.getChildren().remove(circle);
+                        });
+                    }
+                }
+            );
+        }
 
     private void makeLabels(){
         player1Label.setLayoutX(10);
@@ -195,6 +218,11 @@ public class GameBoardGUI {
             player1Label.setVisible(true);
             player2Label.setVisible(false);
         }
+    }
+
+    private void positionButton(){
+        button.setLayoutX(10);
+        button.setLayoutY(40);
     }
 
     private void makeGameOverSound(){
