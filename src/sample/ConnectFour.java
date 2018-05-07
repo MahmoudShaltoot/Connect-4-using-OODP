@@ -8,9 +8,8 @@ public class ConnectFour {
 	public static boolean gameOver = false;
 	public static boolean validGame = true;
 
-	public static Momento momento = new Momento();
-	public static ContextState contextState = new ContextState();
-
+	private static Momento momento = new Momento();
+	private static ContextState contextState = new ContextState();
 
 	public static void setValidGame(boolean validGame2) {
 		validGame = validGame2;

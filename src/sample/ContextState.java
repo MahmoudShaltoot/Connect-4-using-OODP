@@ -1,7 +1,7 @@
 package sample;
 
 public class ContextState {
-    public static GameState contextGameState = new RunningState();
+    private static GameState contextGameState = new RunningState();
 
     public static void setState(GameState gameState){
         contextGameState = gameState;

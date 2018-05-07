@@ -8,11 +8,10 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    //Main page , Select GameMode and press Start game method
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Connect 4");
         primaryStage.setScene(new Scene(root, 400, 500));
         MainPageController.primaryStage = primaryStage;
         primaryStage.show();
@@ -22,4 +21,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-

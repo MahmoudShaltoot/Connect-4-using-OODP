@@ -1,7 +1,7 @@
 package sample;
 
 public abstract class GameState {
-    public String gameState;
+    protected String gameState;
 
     public abstract String getState();
 }

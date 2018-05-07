@@ -19,7 +19,6 @@ import java.util.List;
 
 public class GameBoardGUI {
 
-
     private final int DISC_SIZE = 100;
     private final int ROWS = 6, COLUMNS = 7;
 
@@ -197,7 +196,7 @@ public class GameBoardGUI {
                 }
             );
         }
-
+        
     private void makeLabels(){
         player1Label.setLayoutX(10);
         player1Label.setLayoutY(10);
