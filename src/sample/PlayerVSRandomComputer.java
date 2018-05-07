@@ -5,7 +5,7 @@ public class PlayerVSRandomComputer extends Game {
 	public  PlayerVSRandomComputer() {
 		// TODO Auto-generated method stub
 		player1 = new ConsolePlayer("player 1");
-		player2 = new RandomPlayer("player 2");
+		player2 =  RandomPlayer.getInstance();
 
 	}
 }

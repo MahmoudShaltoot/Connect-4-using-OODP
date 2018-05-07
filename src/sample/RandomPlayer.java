@@ -5,10 +5,14 @@ import java.util.Random;
 public class RandomPlayer implements Player {
 	String playerID;
 
-	public RandomPlayer(String playerID) {
+	private static RandomPlayer instance = new RandomPlayer("player 2");
+
+	private RandomPlayer(String playerID){
 		this.playerID = playerID;
 	}
-
+	public static RandomPlayer getInstance(){
+		return instance;
+	}
 	@Override
 	public boolean play() {
 		// TODO Auto-generated method stub

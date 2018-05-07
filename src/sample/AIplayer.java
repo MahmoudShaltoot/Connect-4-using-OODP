@@ -1,12 +1,20 @@
 package sample;
 
 public class AIplayer implements Player {
+
     String playerID;
 
     minimax minimaxObj ;
-    public AIplayer(String playerID) {
+
+    private static AIplayer instance = new AIplayer("player 2");
+
+    public static AIplayer getInstance(){
+        return instance;
+    }
+
+    private AIplayer(String playerID) {
         this.playerID = playerID;
-        minimaxObj = new minimax(2);
+        minimaxObj = new minimax(1);
     }
 
     @Override
