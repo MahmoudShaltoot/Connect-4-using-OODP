@@ -5,4 +5,4 @@
 
 Game GUI :
 
-![alt text](https://github.com/MahmoudShaltoot/DesignPattern-Gang_Of_Five-/blob/master/connect4.png "Connect 4  Title Text 1")
+![alt text](https://www3.nd.edu/~pbui/teaching/cdt.30010.fa16/static/img/connect4.png "Connect 4  Title Text 1")
