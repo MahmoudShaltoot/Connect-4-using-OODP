@@ -1,8 +1,9 @@
+                                                              # List of design patterns used in the project #
+
+# Singleton Pattern   // Computer [RandomComputer class & AIComputer class]  
 # Factory Pattern
 # decoretor pattern 
 # Iterator Pattern    
-# Null Object Pattern Ht3mlha 3la Class ScoreBoard < tyb hn3mlha leh ? 3lshan ana lsa fate7 el-l3ba w d5lt 3ltol 3la el Scoreboard yrg3ly message en el Scoreboard fadya w mfehash Players
-#{ Iterator and Null Object Pattern depend on Scoreboard implementation  }
-# Prototype Pattern    On minimax Algorithm [DONE]
-# Singleton Pattern   On Computer Object [Singleton on RandomComputer object and Singleton on AIComputer object]  
+# Null Object Pattern 
+# Prototype Pattern    // minimax Algorithm 
 # momento Pattern 
